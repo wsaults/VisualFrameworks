@@ -47,8 +47,6 @@
 							<li><label for="canWeCallForSurvey">May we call you to perform a brief survey? </label><input type="checkbox" id="canWeCallForSurvey" /</li>
 						</ul>
 					</li>
-				</ul>
-				<ul>
 					<li>What are you?</li>
 						<ul>
 							<li><label for="human">Are you a human? </label><input type="radio" id="human" /></li>
@@ -56,8 +54,7 @@
 							<li><label for="robot">Are you a robot? </label><input type="radio" id="robot" /></li>
 							<li><label for="unknown">None of the above </label><input type="radio" id="unknown" /></li>
 						</ul>
-				</ul>
-		
+				</li>
 				<!-- select an option -->
 				<li>
 					<label for="referal">Where did you hear about us?</label>
@@ -65,17 +62,27 @@
 						<optgroup label="A Person">
 							<option value="friend">A Friend</option>
 							<option value="parent">A Parent</option>
-							<option value="sibling">A sibling</option>
+							<option value="sibling">A Sibling</option>
+							<option value="child">Your Child</option>
+						</optgroup>
+						<optgroup label="The Internet">
+							<option value="advertisement">A website advertisement.</option>
+							<option value="google">Google told me.</option>
+							<option value="elders">The elders of the internet whispered it to me while I was watching TRON.</option>
 						</optgroup>
 					</select>
 				</li>
 				
 				<!-- textarea -->
+				<li><label for="response">How can we serve you better? </label><textarea id="response"></textarea></li>
 				
+			</ul>
 			</fieldset>
+			<!-- Submit button -->
+			<input type="submit" value="Submit" />
 		</form>
-		
 		<!-- Clear all anchor tag place holder -->
+		<br />
 		<a href="#">Clear all</a>
 
 	</body>
