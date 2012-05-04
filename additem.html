@@ -26,30 +26,54 @@
 				<ul>
 					<!-- label -->
 					<!-- input fields -->
-					<li><label for="itemName">Name</label><input type="text" id="itemName" /></li>
-					<li><label for="itemType">Type</label><input type="text" id="itemType" /></li>
-					<li><label for="itemForGender">For Gender</label><input type="text" id="itemForGender" /></li>
-					<li><label for="itemColor">Color</label><input type="text" id="itemColor" /</li>
-					<li><label for="itemPrice">Price</label><input type="text" id="itemPrice" /</li>
+					<li><label for="itemName">Name: </label><input type="text" id="itemName" /></li>
+					<li><label for="itemType">Type: </label><input type="text" id="itemType" /></li>
+					<li><label for="itemForGender">For Gender: </label><input type="text" id="itemForGender" /></li>
+					<li><label for="itemColor">Color: </label><input type="text" id="itemColor" /</li>
+					<li><label for="itemPrice">Price: </label><input type="text" id="itemPrice" /</li>
 				</ul>
 			</fieldset>
 			<fieldset>
 				<legend>Options</legend>
-			<ul>
-					<!-- label -->
-					<!-- input fields -->
-					<li><label for="giftWrapped">Do you want it gift wrapped?</label><input type="checkbox" id="giftWrapped" /></li>
-					<li><label for="applyCouponCode">Do you want to apply a coupon code?</label><input type="checkbox" id="applyCouponCode" /></li>
-					<li><label for="itemForGender">For Gender</label><input type="checkbox" id="itemForGender" /></li>
-					<li><label for="itemColor">Color</label><input type="checkbox" id="itemColor" /</li>
-					<li><label for="itemPrice">Price</label><input type="checkbox" id="itemPrice" /</li>
+				<ul>
+					<li>Select any of the following:</li>
+						<ul>
+							<!-- label -->
+							<!-- input fields -->
+							<li><label for="giftWrapped">Do you want it gift wrapped? </label><input type="checkbox" id="giftWrapped" /></li>
+							<li><label for="applyCouponCode">Do you want to apply a coupon code? </label><input type="checkbox" id="applyCouponCode" /></li>
+							<li><label for="returnShopper">Have you shopped with us before? </label><input type="checkbox" id="returnShopper" /></li>
+							<li><label for="receiveEmail">Would you like to receive offers in your inbox? </label><input type="checkbox" id="receiveEmail" /</li>
+							<li><label for="canWeCallForSurvey">May we call you to perform a brief survey? </label><input type="checkbox" id="canWeCallForSurvey" /</li>
+						</ul>
+					</li>
 				</ul>
+				<ul>
+					<li>What are you?</li>
+						<ul>
+							<li><label for="human">Are you a human? </label><input type="radio" id="human" /></li>
+							<li><label for="martian">Are you a martian? </label><input type="radio" id="martian" /></li>
+							<li><label for="robot">Are you a robot? </label><input type="radio" id="robot" /></li>
+							<li><label for="unknown">None of the above </label><input type="radio" id="unknown" /></li>
+						</ul>
+				</ul>
+		
+				<!-- select an option -->
+				<li>
+					<label for="referal">Where did you hear about us?</label>
+					<select id="Choose One">
+						<optgroup label="A Person">
+							<option value="friend">A Friend</option>
+							<option value="parent">A Parent</option>
+							<option value="sibling">A sibling</option>
+						</optgroup>
+					</select>
+				</li>
+				
+				<!-- textarea -->
+				
 			</fieldset>
 		</form>
-		
-		<!-- textarea -->
-		
-		<!-- select & option -->
 		
 		<!-- Clear all anchor tag place holder -->
 		<a href="#">Clear all</a>
