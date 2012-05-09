@@ -38,6 +38,17 @@ h1
 	margin: 10px 20px 10px 60px;
 }
 
+h2
+{
+	font-size: 16pt;
+	text-align: center;
+}
+
+p
+{
+	text-align: center;
+}
+
 a
 {
 	color: #8C4A13;
@@ -56,7 +67,7 @@ legend
 
 ul
 {
-	margin: 15px 0;
+	margin: 2px 0;
 	width: auto;
 	padding: 0 0 0 5px;
 }
@@ -67,20 +78,24 @@ li
 	margin: 5px 0 0 0;
 }
 
-li label
+input
 {
+	width: 95%;
+	height: 25px;
+	margin: 5px 0 0 -5px;
+	font-size: 16pt;
+}
+
+.inputBox
+{
+	vertical-align: text-top;
 	display: inline-block;
 	width: 200px;
 }
 
-input
-{
-	vertical-align: text-top;
-	width: 95%;
-	height: 25px;
-	margin: 5px 0 0 0;
-	font-size: 16pt;
-	
+.radio
+{	
+
 }
 
 textarea, select
@@ -95,14 +110,20 @@ textarea
 	font-size: 16pt;
 }
 
-.response
+#response
 {
 	padding: 15px 0;
 }
 
-#submit
+#submit, #addItem
 {
-	margin: 5px 0 0 8px;
+	margin: 0 0 0 8px;
 	height: 30px;
 }
 
+#clearAll
+{	
+	margin: 0 0 10px 8px;
+	width: 45%;
+	height: 30px;
+}

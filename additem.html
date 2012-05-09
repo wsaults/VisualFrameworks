@@ -28,75 +28,80 @@ Term: 0512
 				<img id="logo" src="images/logo.png" alt="Fossil" height="43" width="75" />
 			</header>
 			
-			<!-- form -->
-			<form action="#" method="post">
-			
-				<!-- fieldset & legend -->
-				<fieldset>
-					<legend>Item Description</legend>
-					<ul>
-						<!-- label -->
-						<!-- input fields -->
-						<li><label for="itemName">Name: </label><input type="text" id="itemName" /></li>
-						<li><label for="itemNumber">SKU: </label><input type="text" id="itemNumber" /></li>
+			<div>
+				<form action="#" method="post">
+				
+					<!-- fieldset & legend -->
+					<fieldset>
+						<legend>Item Description</legend>
+						<ul>
+							<!-- label -->
+							<!-- input fields -->
+							<li><label class="inputBox" for="itemName">Name: </label><input type="text" id="itemName" /></li>
+							<li><label class="inputBox" for="itemNumber">SKU: </label><input type="text" id="itemNumber" /></li>
+							
+							<!-- Change type to a select field -->
+							<li><label class="inputBox" for="itemType">Type: </label><input type="text" id="itemType" /></li>
+							
+							<!-- Change color to a select field -->
+							<li><label class="inputBox" for="itemColor">Color: </label><input type="text" id="itemColor" /></li>
+							<li><label class="inputBox" for="itemPrice">Price: </label><input type="number" id="itemPrice" /></li>
+							<li><label class="inputBox" for="quantity">Quantity: </label><input type="range" min="0" max="99" value="0" id="quantity" /></li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<legend>Options</legend>
 						
-						<!-- Change type to a select field -->
-						<li><label for="itemType">Type: </label><input type="text" id="itemType" /></li>
+						<h3>Select any of the following:</h3>
+						<ul>
+							<!-- label -->
+							<!-- Check boxes -->
+							<li><label for="giftWrapped">Do you want it gift wrapped? </label><input type="checkbox" id="giftWrapped" /></li>
+							<li><label for="applyCouponCode">Do you want to apply a coupon code? </label><input type="checkbox" id="applyCouponCode" /></li>
+							<li><label for="returnShopper">Have you shopped with us before? </label><input type="checkbox" id="returnShopper" /></li>
+							<li><label for="receiveEmail">Would you like to receive offers in your inbox? </label><input type="checkbox" id="receiveEmail" /></li>
+							<li><label for="canWeCallForSurvey">May we call you to perform a brief survey? </label><input type="checkbox" id="canWeCallForSurvey" /></li>
+						</ul>
 						
-						<!-- Change color to a select field -->
-						<li><label for="itemColor">Color: </label><input type="text" id="itemColor" /></li>
-						<li><label for="itemPrice">Price: </label><input type="number" id="itemPrice" /></li>
-						<li><label for="quantity">Quantity: </label><input type="range" min="0" max="99" value="0" id="quantity" /></li>
-					</ul>
-				</fieldset>
-				<fieldset>
-					<legend>Options</legend>
-					
-					<h3>Select any of the following:</h3>
-					<ul>
-						<!-- label -->
-						<!-- Check boxes -->
-						<li><label for="giftWrapped">Do you want it gift wrapped? </label><input type="checkbox" id="giftWrapped" /></li>
-						<li><label for="applyCouponCode">Do you want to apply a coupon code? </label><input type="checkbox" id="applyCouponCode" /></li>
-						<li><label for="returnShopper">Have you shopped with us before? </label><input type="checkbox" id="returnShopper" /></li>
-						<li><label for="receiveEmail">Would you like to receive offers in your inbox? </label><input type="checkbox" id="receiveEmail" /></li>
-						<li><label for="canWeCallForSurvey">May we call you to perform a brief survey? </label><input type="checkbox" id="canWeCallForSurvey" /></li>
-					</ul>
-					
-					<h3>What are you?</h3>
-					<ul>
-						<!-- Radio buttons -->
-						<li><label for="human">Are you a human? </label><input type="radio" id="human" /></li>
-						<li><label for="martian">Are you a martian? </label><input type="radio" id="martian" /></li>
-						<li><label for="robot">Are you a robot? </label><input type="radio" id="robot" /></li>
-						<li><label for="unknown">None of the above </label><input type="radio" id="unknown" /></li>
-					</ul>
-					<div>
-						<label for="ChooseOne">Where did you hear about us?</label>
-						<select>
-							<optgroup label="A Person">
-								<option value="friend">A Friend</option>
-								<option value="parent">A Parent</option>
-								<option value="sibling">A Sibling</option>
-								<option value="child">Your Child</option>
-							</optgroup>
-							<optgroup label="The Internet">
-								<option value="advertisement">A website advertisement.</option>
-								<option value="google">Google told me.</option>
-								<option value="elders">The elders of the internet.</option>
-							</optgroup>
-						</select>
-						<div class="response">	
-							<label for="response">How can we serve you better? </label><textarea id="response" cols="32" rows="5"></textarea>
+						<h3>What are you?</h3>
+						<ul>
+							<!-- Radio buttons -->
+							<li><label class="radio" for="human">Are you a human? </label><input type="radio" name="verify" id="human" /></li>
+							<li><label class="radio" name="verify" for="martian">Are you a martian? </label><input type="radio" name="verify" id="martian" /></li>
+							<li><label class="radio" name="verify" for="robot">Are you a robot? </label><input type="radio" name="verify" id="robot" /></li>
+							<li><label class="radio" name="verify" for="unknown">None of the above </label><input type="radio" name="verify" id="unknown" /></li>
+						</ul>
+						<div>
+							<label for="ChooseOne">Where did you hear about us?</label>
+							<select id="ChooseOne">
+								<optgroup label="A Person">
+									<option value="friend">A Friend</option>
+									<option value="parent">A Parent</option>
+									<option value="sibling">A Sibling</option>
+									<option value="child">Your Child</option>
+								</optgroup>
+								<optgroup label="The Internet">
+									<option value="advertisement">A website advertisement.</option>
+									<option value="google">Google told me.</option>
+									<option value="elders">The elders of the internet.</option>
+								</optgroup>
+							</select>
+							<div id="response">	
+								<label for="response">How can we serve you better? </label><textarea cols="32" rows="5"></textarea>
+							</div>
 						</div>
-					</div>
-				</fieldset>
-				<!-- Submit button -->
-				<input id="submit" type="submit" value="Submit" />
-			</form>
+					</fieldset>
+					<!-- Submit button -->
+					<input id="submit" type="submit" value="Submit" />
+				</form>
+			</div>
 			<!-- Clear all anchor tag place holder -->
 			<br />
-			<a href="#">Clear all</a>
+			<div>
+				<form>
+					<input id="clearAll" type="button" value="Clear All" onclick="window.location.href='#'" />
+				</form>
+			</div>
 		</div>
 	</body>
 </html>  
