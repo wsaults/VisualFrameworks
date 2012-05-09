@@ -14,26 +14,57 @@ body
 	color: #C57F45;
 }
 
+#navigationBar
+{	
+	outline: solid 1px #694425;
+	background-color: #5B2C06;
+	font-size: 8pt;
+	padding: 1px 0;
+	margin: 0 0 5px 0;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+#site-wrapper
+{
+
+}
+
+h1
+{
+	float: left;
+	margin: 10px 20px 10px 60px;
+}
+
 a
 {
 	color: #8C4A13;
 }
 
+fieldset
+{
+	border: none;
+}
+
 legend
 {
-	margin: 5px 0;
+	margin: 10px 0;
+	font-size: 16pt;
 }
 
 ul
 {
-	margin: 15px auto;
+	margin: 15px 0;
 	width: auto;
+	padding: 0 0 0 5px;
 }
 
 li
 {
 	list-style-type: none;
-	margin: 5px 0;
+	margin: 5px 0 0 0;
 }
 
 li label
@@ -42,12 +73,36 @@ li label
 	width: 200px;
 }
 
-#site-wrapper
+input
 {
-	margin: 0 10px;
+	vertical-align: text-top;
+	width: 95%;
+	height: 25px;
+	margin: 5px 0 0 0;
+	font-size: 16pt;
+	
+}
+
+textarea, select
+{
+	vertical-align: text-top;
+	width: 100%;
+	margin: 5px 0 0 0;
+}
+
+textarea
+{
+	font-size: 16pt;
 }
 
 .response
 {
 	padding: 15px 0;
 }
+
+#submit
+{
+	margin: 5px 0 0 8px;
+	height: 30px;
+}
+

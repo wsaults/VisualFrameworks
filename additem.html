@@ -23,9 +23,9 @@ Term: 0512
 	</head>
 	<body>
 		<div id="site-wrapper">
-			<header>
-				<img src="images/logo.png" alt="Fossil" height="86px" width="150px" />
+			<header id="navigationBar">
 				<h1>Add Fossil Item</h1>
+				<img id="logo" src="images/logo.png" alt="Fossil" height="43" width="75" />
 			</header>
 			
 			<!-- form -->
@@ -43,12 +43,9 @@ Term: 0512
 						<!-- Change type to a select field -->
 						<li><label for="itemType">Type: </label><input type="text" id="itemType" /></li>
 						
-						<!-- Change gender to a select field -->
-						<li><label for="itemForGender">Gender: </label><input type="text" id="itemForGender" /></li>
-						
 						<!-- Change color to a select field -->
 						<li><label for="itemColor">Color: </label><input type="text" id="itemColor" /></li>
-						<li><label for="itemPrice">Price: </label><input type="text" id="itemPrice" /></li>
+						<li><label for="itemPrice">Price: </label><input type="number" id="itemPrice" /></li>
 						<li><label for="quantity">Quantity: </label><input type="range" min="0" max="99" value="0" id="quantity" /></li>
 					</ul>
 				</fieldset>
@@ -76,7 +73,7 @@ Term: 0512
 					</ul>
 					<div>
 						<label for="ChooseOne">Where did you hear about us?</label>
-						<select id="ChooseOne">
+						<select>
 							<optgroup label="A Person">
 								<option value="friend">A Friend</option>
 								<option value="parent">A Parent</option>
@@ -95,7 +92,7 @@ Term: 0512
 					</div>
 				</fieldset>
 				<!-- Submit button -->
-				<input type="submit" value="Submit" />
+				<input id="submit" type="submit" value="Submit" />
 			</form>
 			<!-- Clear all anchor tag place holder -->
 			<br />
