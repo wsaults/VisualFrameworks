@@ -8,4 +8,46 @@ body
 {
 	background-image:url('images/wood_pattern.png');
 	background-repeat:repeat-x repeat-y;
+	font-family: Arial, Helvetica, san-serif;
+	margin: auto;
+	width: 320px;
+	color: #C57F45;
+}
+
+a
+{
+	color: #8C4A13;
+}
+
+legend
+{
+	margin: 5px 0;
+}
+
+ul
+{
+	margin: 15px auto;
+	width: auto;
+}
+
+li
+{
+	list-style-type: none;
+	margin: 5px 0;
+}
+
+li label
+{
+	display: inline-block;
+	width: 200px;
+}
+
+#site-wrapper
+{
+	margin: 0 10px;
+}
+
+.response
+{
+	padding: 15px 0;
 }
