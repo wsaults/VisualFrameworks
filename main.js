@@ -54,19 +54,21 @@ window.addEventListener("DOMContentLoaded", function() {
 		getCheckBoxValue();
 		// Get all form field values.
 		var item = {};
-			item.itemName = ["ItemName", $('itemName').value];
-			item.itemNumber = ["ItemNumber", $('itemNumber').value];
-			item.itemColor = ["ItemColor", $('itemColor').value];
-			item.itemPrice = ["ItemPrice", $('itemPrice').value];
-			item.quantity = ["Quantity", $('quantity').value];
+			item.itemName = ["ItemName:", $('itemName').value];
+			item.itemNumber = ["ItemNumber:", $('itemNumber').value];
+			item.itemColor = ["ItemColor:", $('itemColor').value];
+			item.itemPrice = ["ItemPrice:", $('itemPrice').value];
+			item.quantity = ["Quantity:", $('quantity').value];
 			// Checkboxes
-			item.giftWrapped = ["GiftWrapped", giftValue];
-			item.applyCouponCode = ["ApplyCouponCode", couponValue];
-			item.receiveEmail = ["ReceiveEmail", emailValue];
+			item.giftWrapped = ["GiftWrapped:", giftValue];
+			item.applyCouponCode = ["ApplyCouponCode:", couponValue];
+			item.receiveEmail = ["ReceiveEmail:", emailValue];
 			// Radio
-			item.verify = ["Verify", verifyValue];
+			item.verify = ["Verify:", verifyValue];
 			// Select
-			item.ChooseOne = ["ChooseOne", $('chooseOne').value];
+			// the following line isn't working. TODO - Fix it!
+/* 			item.ChooseOne = ["ChooseOne", $('chooseOne').value]; */
+			item.textarea = ["Textarea", $('textarea').value];
 		
 		// Save the data into local storage
 		localStorage.setItem(id, JSON.stringify(item));
