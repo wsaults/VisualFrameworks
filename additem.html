@@ -35,15 +35,9 @@ Term: 0512
 					<fieldset>
 						<legend>-Item Description-</legend>
 						<ul>
-							<!-- label -->
 							<!-- input fields -->
 							<li><label class="inputBox" for="itemName">Name: </label><input type="text" id="itemName" /></li>
 							<li><label class="inputBox" for="itemNumber">SKU: </label><input type="text" id="itemNumber" /></li>
-							
-							<!-- Change type to a select field -->
-							<li><label class="inputBox" for="itemType">Type: </label><input type="text" id="itemType" /></li>
-							
-							<!-- Change color to a select field -->
 							<li><label class="inputBox" for="itemColor">Color: </label><input type="text" id="itemColor" /></li>
 							<li><label class="inputBox" for="itemPrice">Price: </label><input type="number" id="itemPrice" /></li>
 							<li><label class="inputBox" for="quantity">Quantity: </label><input type="range" min="0" max="99" value="0" id="quantity" /></li>
@@ -54,23 +48,19 @@ Term: 0512
 						
 						<h3>Select any of the following:</h3>
 						<ul>
-							<!-- label -->
 							<!-- Check boxes -->
-							<li><label for="giftWrapped">Do you want it gift wrapped? </label><input type="checkbox" id="giftWrapped" /></li>
-							<li><label for="applyCouponCode">Do you want to apply a coupon code? </label><input type="checkbox" id="applyCouponCode" /></li>
-							<li><label for="returnShopper">Have you shopped with us before? </label><input type="checkbox" id="returnShopper" /></li>
-							<li><label for="receiveEmail">Would you like to receive offers in your inbox? </label><input type="checkbox" id="receiveEmail" /></li>
-							<li><label for="canWeCallForSurvey">May we call you to perform a brief survey? </label><input type="checkbox" id="canWeCallForSurvey" /></li>
+							<li><label for="giftWrapped">Do you want it gift wrapped? </label><input value="Yes" type="checkbox" id="giftWrapped" /></li>
+							<li><label for="applyCouponCode">Do you want to apply a coupon code? </label><input value="Yes" type="checkbox" id="applyCouponCode" /></li>
+							<li><label for="receiveEmail">Would you like to receive offers in your inbox? </label><input value="Yes" type="checkbox" id="receiveEmail" /></li>
 						</ul>
 					</fieldset>
 						<fieldset>
 						<legend>-What are you?-</legend>
 						<ul>
 							<!-- Radio buttons -->
-							<li><label class="radio" for="human">Are you a human? </label><input type="radio" name="verify" id="human" /></li>
-							<li><label class="radio" for="martian">Are you a martian? </label><input type="radio" name="verify" id="martian" /></li>
-							<li><label class="radio" for="robot">Are you a robot? </label><input type="radio" name="verify" id="robot" /></li>
-							<li><label class="radio" for="unknown">None of the above </label><input type="radio" name="verify" id="unknown" /></li>
+							<li><label class="radio" for="human">Human </label><input value="Human" type="radio" name="verify" id="human" /></li>
+							<li><label class="radio" for="martian">Martian </label><input value="Martian" type="radio" name="verify" id="martian" /></li>
+							<li><label class="radio" for="robot">Robot </label><input value="Robot" type="radio" name="verify" id="robot" /></li>
 						</ul>
 						<div>
 							<label for="ChooseOne">Where did you hear about us?</label>
@@ -101,6 +91,7 @@ Term: 0512
 			<div>
 				<form>
 					<input id="clearAll" type="button" value="Clear All" onclick="window.location.href='#'" />
+					<input id="displayData" type="button" value="Display data" />
 				</form>
 			</div>
 		</div>
