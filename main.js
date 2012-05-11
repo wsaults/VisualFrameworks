@@ -1,15 +1,20 @@
-/* 
-Project: Deliverable 2
-Name: William Saults
-Term: 0512
-*/
+// Project: Deliverable 2
+// Name: William Saults
+// Term: 0512
 
 // Wait until the DOM is ready
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("DOMContentLoaded", function() {
+
+	// Global Variables
+	var verifyValue,
+		giftValue = "No",
+		couponValue = "No",
+		emailValue = "No"
+	;
 
 	// getElementById Function
-	function $(arg){
-		var element = document.getElementById(arg);
+	function $(x){
+		var element = document.getElementById(x);
 		return element;
 	}
 	
@@ -26,41 +31,42 @@ window.addEventListener("DOMContentLoaded", function(){
 		if($('giftWrapped').checked) {
 			giftValue = $('giftWrapped').value;
 		} else {
-			giftValue = "No"
+			giftValue = "No";
 		}
 		
 		if($('applyCouponCode').checked) {
 			couponValue = $('applyCouponCode').value;
 		} else {
-			couponValue = "No"
+			couponValue = "No";
 		}
 		
 		if($('receiveEmail').checked) {
 			emailValue = $('receiveEmail').value;
 		} else {
-			emailValue = "No"
+			emailValue = "No";
 		}
 	}
 	
 	function storeData() {
 		var id = Math.floor(Math.random()*100000001);
+		console.log("Submitting data.");
 		getSelectedRadio();
 		getCheckBoxValue();
 		// Get all form field values.
 		var item = {};
-			item.itemName = ["ItemName:", $('itemName').value];
-			item.itemNumber = ["ItemNumber:", $('itemNumber').value];
-			item.itemColor = ["ItemColor:", $('itemColor').value];
-			item.itemPrice = ["ItemPrice:", $('itemPrice').value];
-			item.quantity = ["Quantity:", $('quantity').value];
+			item.itemName = ["ItemName", $('itemName').value];
+			item.itemNumber = ["ItemNumber", $('itemNumber').value];
+			item.itemColor = ["ItemColor", $('itemColor').value];
+			item.itemPrice = ["ItemPrice", $('itemPrice').value];
+			item.quantity = ["Quantity", $('quantity').value];
 			// Checkboxes
-			item.giftWrapped = ["GiftWrapped:", giftValue];
-			item.applyCouponCode = ["ApplyCouponCode:", couponValue];
-			item.receiveEmail = ["ReceiveEmail:", emailValue];
+			item.giftWrapped = ["GiftWrapped", giftValue];
+			item.applyCouponCode = ["ApplyCouponCode", couponValue];
+			item.receiveEmail = ["ReceiveEmail", emailValue];
 			// Radio
-			item.verify = ["Verify:", verifyValue];
+			item.verify = ["Verify", verifyValue];
 			// Select
-			item.ChooseOne = ["ChooseOne:", $('chooseOne').value];
+			item.ChooseOne = ["ChooseOne", $('chooseOne').value];
 		
 		// Save the data into local storage
 		localStorage.setItem(id, JSON.stringify(item));
@@ -68,20 +74,40 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function getData() {
+		console.log("Getting data.");
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		for(var i=0, len=localStorage.length; i < len; i++) {
+			var makeli = document.createElement('li');
+			makeList.appendChild(makeli);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeli.appendChild(makeSubList);
+			for(var n in obj) {
+				var makeSubli = document.createElement('li');
+				makeSubList.appendChild(makeSubli);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubli.innerHTML = optSubText;
+			}
+		}
 	}
 	
 	function clearLocalData() {
-		console.log("Clearning data.");
+		console.log("Clearing data.");
+		if(localStorage.length === 0) {
+			alert("No data to clear");
+		} else {
+			localStorage.clear();
+			alert("Local Storage Cleared");
+			window.location.reload();
+			return false;
+		}
 	}
-	
-	// Global Variables
-	var verifyValue,
-		giftValue = "No",
-		couponValue = "No",
-		emailValue = "No"
-	;
 	
 	// Links and Submit Click Events
 	var submit = $('submit');
