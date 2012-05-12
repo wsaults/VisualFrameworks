@@ -114,7 +114,7 @@ textarea
 	padding: 15px 0;
 }
 
-#submit, #addItem
+#submit, #addNew
 {
 	margin: 0 0 0 8px;
 	height: 30px;
@@ -125,4 +125,9 @@ textarea
 	margin: 0 0 10px 8px;
 	width: 45%;
 	height: 30px;
+}
+
+#addNew
+{
+	display: none;
 }

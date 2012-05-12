@@ -29,7 +29,7 @@ Term: 0512
 			</header>
 			
 			<div>
-				<form action="#" method="post">
+				<form action="#" method="post" id="itemForm">
 				
 					<!-- fieldset & legend -->
 					<fieldset>
@@ -62,24 +62,11 @@ Term: 0512
 							<li><label class="radio" for="martian">Martian </label><input value="Martian" type="radio" name="verify" id="martian" /></li>
 							<li><label class="radio" for="robot">Robot </label><input value="Robot" type="radio" name="verify" id="robot" /></li>
 						</ul>
-						<div>
-							<label for="ChooseOne">Where did you hear about us?</label>
-							<select id="ChooseOne">
-								<optgroup label="A Person">
-									<option value="friend">A Friend</option>
-									<option value="parent">A Parent</option>
-									<option value="sibling">A Sibling</option>
-									<option value="child">Your Child</option>
-								</optgroup>
-								<optgroup label="The Internet">
-									<option value="advertisement">A website advertisement.</option>
-									<option value="google">Google told me.</option>
-									<option value="elders">The elders of the internet.</option>
-								</optgroup>
-							</select>
-							<div id="response">	
-								<label for="textarea">How can we serve you better? </label><textarea id="textarea" cols="32" rows="5"></textarea>
-							</div>
+						<ul>
+							<li id="select"><label for="selectGroup">Where did you hear about us?</label></li>
+						</ul>
+						<div id="response">	
+							<label for="textarea">How can we serve you better? </label><textarea id="textarea" cols="32" rows="5"></textarea>
 						</div>
 					</fieldset>
 					<!-- Submit button -->
@@ -91,7 +78,7 @@ Term: 0512
 			<div>
 				<form>
 					<input id="clearAll" type="button" value="Clear All" />
-					<input id="displayData" type="button" value="Display data" />
+					<input id="displayData" type="button" value="Display data" />			<input id="addNew" type="button" value="Add New Item" onClick="window.location.reload()" />
 				</form>
 			</div>
 		</div>

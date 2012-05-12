@@ -9,13 +9,30 @@ window.addEventListener("DOMContentLoaded", function() {
 	var verifyValue,
 		giftValue = "No",
 		couponValue = "No",
-		emailValue = "No"
+		emailValue = "No",
+		selectGroup = ["Where did you hear about us?","A website advertisement.","Google told me.","The elders of the internet."]
 	;
+	makeCats();
 
 	// getElementById Function
 	function $(x){
 		var element = document.getElementById(x);
 		return element;
+	}
+	
+	function makeCats() {
+		var forTag = document.getElementsByTagName("form"),
+			selectLi = $('select'),
+			makeSelect = document.createElement('select');
+			makeSelect.setAttribute("id", "groups");
+		for(var i=0, j=selectGroup.length; i<j; i++) {
+			var makeOption = document.createElement('option');
+			var optText = selectGroup[i];
+			makeOption.setAttribute("value",optText);
+			makeOption.innerHTML = optText;
+			makeSelect.appendChild(makeOption);
+		}
+		selectLi.appendChild(makeSelect);
 	}
 	
 	function getSelectedRadio() {
@@ -47,6 +64,28 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 	
+	function toggleControls(n) {
+		switch(n) {
+			case "on":
+				$('itemForm').style.display = "none";
+				$('clearAll').style.display = "inline";
+				$('displayData').style.display = "none";
+				$('addNew').style.display = "inline";
+				break;
+			
+			case "off":
+				$('itemForm').style.display = "block";
+				$('clearAll').style.display = "inline";
+				$('displayData').style.display = "inline";
+				$('addNew').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			
+			default:
+				return false;
+		}
+	}
+	
 	function storeData() {
 		var id = Math.floor(Math.random()*100000001);
 		console.log("Submitting data.");
@@ -66,9 +105,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			// Radio
 			item.verify = ["Verify:", verifyValue];
 			// Select
-			// the following line isn't working. TODO - Fix it!
-/* 			item.ChooseOne = ["ChooseOne", $('chooseOne').value]; */
-			item.textarea = ["Textarea", $('textarea').value];
+			item.select = ["Select:", $('groups').value];
+			item.textarea = ["Textarea:", $('textarea').value];
 		
 		// Save the data into local storage
 		localStorage.setItem(id, JSON.stringify(item));
@@ -76,12 +114,14 @@ window.addEventListener("DOMContentLoaded", function() {
 	}
 	
 	function getData() {
+		toggleControls("on");
 		console.log("Getting data.");
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$('items').style.display = "block";
 		for(var i=0, len=localStorage.length; i < len; i++) {
 			var makeli = document.createElement('li');
 			makeList.appendChild(makeli);
