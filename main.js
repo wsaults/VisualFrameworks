@@ -12,7 +12,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		emailValue = "No",
 		selectGroup = ["Where did you hear about us?","A website advertisement.","Google told me.","The elders of the internet."]
 	;
-	makeCats();
 
 	// getElementById Function
 	function $(x){
@@ -107,6 +106,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			// Select
 			item.select = ["Select:", $('groups').value];
 			item.textarea = ["Textarea:", $('textarea').value];
+			item.hr = ["", '<hr>'];
 		
 		// Save the data into local storage
 		localStorage.setItem(id, JSON.stringify(item));
@@ -116,6 +116,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	function getData() {
 		toggleControls("on");
 		console.log("Getting data.");
+		document.body.appendChild(document.createElement('br'));
+   		document.body.appendChild(document.createElement('hr'));
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
@@ -161,5 +163,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	var displayData = $('displayData');
 	displayData.addEventListener("click", getData);
 
+	makeCats();
 
 }); // End "DOMContentLoaded" listener
