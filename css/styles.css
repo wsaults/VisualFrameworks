@@ -1,0 +1,133 @@
+/* 
+Project: Deliverable 2
+Name: William Saults
+Term: 0512
+*/
+
+body
+{
+	background-image:url('../images/wood_pattern.png');
+	background-repeat:repeat-x repeat-y;
+	font-family: Arial, Helvetica, san-serif;
+	margin: auto;
+	width: 320px;
+	color: #C57F45;
+}
+
+#navigationBar
+{	
+	outline: solid 1px #694425;
+	background-color: #5B2C06;
+	font-size: 8pt;
+	padding: 1px 0;
+	margin: 0 0 5px 0;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+#site-wrapper
+{
+
+}
+
+h1
+{
+	float: left;
+	margin: 10px 20px 10px 60px;
+}
+
+h2
+{
+	font-size: 16pt;
+	text-align: center;
+}
+
+p
+{
+	text-align: center;
+}
+
+a
+{
+	color: #8C4A13;
+}
+
+fieldset
+{
+	border: none;
+}
+
+legend
+{
+	margin: 10px 0;
+	font-size: 16pt;
+}
+
+ul
+{
+	margin: 2px 0;
+	width: auto;
+	padding: 0 0 0 5px;
+}
+
+li
+{
+	list-style-type: none;
+	margin: 5px 0 0 0;
+}
+
+input
+{
+	width: 95%;
+	height: 25px;
+	margin: 5px 0 0 -5px;
+	font-size: 16pt;
+}
+
+.inputBox
+{
+	vertical-align: text-top;
+	display: inline-block;
+}
+
+.radio
+{	
+
+}
+
+textarea, select
+{
+	vertical-align: text-top;
+	width: 100%;
+	margin: 5px 0 0 0;
+}
+
+textarea
+{
+	font-size: 16pt;
+}
+
+#response
+{
+	padding: 15px 0;
+}
+
+#submit, #addNew
+{
+	margin: 0 0 0 8px;
+	height: 30px;
+}
+
+#clearAll, #displayData
+{	
+	margin: 0 0 10px 8px;
+	width: 45%;
+	height: 30px;
+}
+
+#addNew
+{
+	display: none;
+}
