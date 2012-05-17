@@ -150,7 +150,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Item";
-		//editLink.addEventListener("click", editItem);
+		editLink.addEventListener("click", editItem);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 		
@@ -169,6 +169,46 @@ window.addEventListener("DOMContentLoaded", function() {
 		linksLi.appendChild(hrTag);
 	}
 	
+	function editItem() {
+		// Grab the data from our item in local storage.
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		// Show the form
+		toggleControls("off");
+		
+		// Populate the form fields with current localStorage values.
+		$('groups').value = item.select[1];
+		$('itemName').value = item.itemName[1];
+		$('itemNumber').value = item.itemNumber[1];
+		$('itemColor').value = item.itemColor[1];
+		$('itemPrice').value = item.itemPrice[1];
+		$('quantity').value = item.quantity[1];
+		$('textarea').value = item.textarea[1];
+
+		// Checkboxes
+		if (item.giftWrapped == "Yes") {
+			$('giftWrapped').setAttribute("checked", "checked");
+		}
+		if (item.applyCouponCode == "Yes") {
+			$('applyCouponCode').setAttribute("checked", "checked");
+		}
+		if (item.receiveEmail == "Yes") {
+			$('receiveEmail').setAttribute("checked", "checked");
+		}
+		
+		// Radio
+		var radios = document.forms[0].verifyValue;
+		for (var i = 0; i < radios.length; i++) {
+			if (radios[i].value == "human" && item.verifyValue[1] == "human") {
+				radios[i].setAttribute("checked", "checked");
+			} else if (radios[i].value == "martian" && item.verifyValue[1] == "martian") {
+				radios[i].setAttribute("checked", "checked");
+			} else if (radios[i].value == "robot" && item.verifyValue[1] == "robot") {
+				radios[i].setAttribute("checked", "checked");
+			}
+		}
+	}
 	
 	function clearLocalData() {
 		console.log("Clearing data.");
