@@ -114,7 +114,7 @@ textarea
 	padding: 15px 0;
 }
 
-#submit, #addNew
+#submit, #addNew, #addItem
 {
 	margin: 0 0 0 8px;
 	height: 30px;
