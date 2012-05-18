@@ -33,7 +33,9 @@ Term: 0512
 				
 					<!-- fieldset & legend -->
 					<fieldset>
-						<legend>-Item Description-</legend>
+						<legend>-Item-</legend>
+					<span>* fields are required.</span>
+					<ul id="errors"></ul>
 						<ul>
 							<!-- input fields -->
 							<li><label class="inputBox" for="itemName">Name: </label><input type="text" id="itemName" /></li>
@@ -71,12 +73,7 @@ Term: 0512
 					</fieldset>
 					<!-- Submit button -->
 					<input id="submit" type="submit" value="Submit" />
-				</form>
-			</div>
-			<!-- Clear all anchor tag place holder -->
-			<br />
-			<div>
-				<form>
+					<br /><br />
 					<input id="clearAll" type="button" value="Clear All" />
 					<input id="displayData" type="button" value="Display data" />			<input id="addNew" type="button" value="Add New Item" onClick="window.location.reload()" />
 				</form>
