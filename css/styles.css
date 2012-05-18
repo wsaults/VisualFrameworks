@@ -131,3 +131,8 @@ textarea
 {
 	display: none;
 }
+
+span, #errors
+{
+	color: red;
+}

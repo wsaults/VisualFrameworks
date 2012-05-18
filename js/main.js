@@ -10,15 +10,16 @@ window.addEventListener("DOMContentLoaded", function() {
 		giftValue = "No",
 		couponValue = "No",
 		emailValue = "No",
-		errMsg = $('errors'),
-		selectGroup = ["Where did you hear about us?","A website advertisement.","Google told me.","The elders of the internet."]
+		selectGroup = ["*Where did you hear about us?","A website advertisement.","Google told me.","The elders of the internet."]
 	;
-
+	
 	// getElementById Function
 	function $(x){
 		var element = document.getElementById(x);
 		return element;
 	}
+	
+	var errMsg = $('errors');
 	
 	function makeCats() {
 		var forTag = document.getElementsByTagName("form"),
@@ -118,62 +119,79 @@ window.addEventListener("DOMContentLoaded", function() {
 		alert("Item saved.");	
 	}
 	
-	function getData() {
-		toggleControls("on");
-		console.log("Getting data.");
-		document.body.appendChild(document.createElement('br'));
-   		document.body.appendChild(document.createElement('hr'));
-		var makeDiv = document.createElement('div');
-		makeDiv.setAttribute("id", "items");
-		var makeList = document.createElement('ul');
-		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
-		$('items').style.display = "block";
-		for(var i=0, len=localStorage.length; i < len; i++) {
-			var makeli = document.createElement('li');
-			var linksLi = document.createElement('li');
-			makeList.appendChild(makeli);
-			var key = localStorage.key(i);
-			var value = localStorage.getItem(key);
-			var obj = JSON.parse(value);
-			var makeSubList = document.createElement('ul');
-			makeli.appendChild(makeSubList);
-			for(var n in obj) {
-				var makeSubli = document.createElement('li');
-				makeSubList.appendChild(makeSubli);
-				var optSubText = obj[n][0]+" "+obj[n][1];
-				makeSubli.innerHTML = optSubText;
-				makeSubList.appendChild(linksLi);
+	function validate(e) {
+		// Define the elements we want to check
+		var getGroup = $('groups');
+		var getItemNumber = $('itemNumber'); // check for some format. ex: AAA###
+		var getItemPrice = $('itemPrice'); // check for $##.## format
+		var getQuantity = $('quantity'); // make sure it is a number
+		var getTextArea = $('textarea'); // check for length 255 char
+		
+		// Reset Error Messages
+		errMsg.innerHTML = "";
+/*
+		getGroup.style.border = "none";
+		getItemNumber.sytle.border = "none";
+		getItemPrice.sytle.border = "none";
+		getQuantity.sytle.border = "none";
+		getTextArea.sytle.border = "none";
+*/
+		
+		// Get Error Messages
+		var messageArray = [];
+		
+		// Group validation
+		if(getGroup.value === "*Where did you hear about us?") {
+			var groupError = "Please make a selection.";
+/* 			getGroup.style.border = "1px solid red"; */
+			messageArray.push(groupError);
+		}
+		
+		// Item number validation
+		if(getItemNumber.value === "") {
+			var itemNumberError = "Please enter a valid item SKU";
+/* 			getItemNumber.sytle.border = "1px solid red"; */
+			messageArray.push(itemNumberError);
+			
+		}
+		
+		// Item price validation
+		if(getItemPrice.value === "") {
+			var itemPriceError = "Please enter a valid item price";
+/* 			getItemPrice.sytle.border = "1px solid red"; */
+			messageArray.push(itemPriceError);
+		}
+		
+		// Item quantity validation
+		if(getQuantity.value === "") {
+			var itemQuantityError = "Please enter a valid item quantity";
+/* 			getQuantity.sytle.border = "1px solid red"; */
+			messageArray.push(itemQuantityError);
+		}
+		// Textarea validation
+		if(getTextArea.value.length >= 255) {
+			var textAreaError = "Please enter a 256 or less characters";
+/* 			getTextArea.sytle.border = "1px solid red"; */
+			messageArray.push(textAreaError);
+		}
+		
+		if (messageArray.length >= 1) {
+			for(var i=0, j=messageArray.length; i < j; i++) {
+				var txt = document.createElement('li');
+				txt.innerHTML = messageArray[i];
+				errMsg.appendChild(txt);
 			}
-			makeItemLinks(localStorage.key(i), linksLi); // Create our edit and delete links for each item
+			e.preventDefault();
+			return false;
+		} else {
+			// If everything validates, save the data.
+			storeData(this.key);
 		}
 	}
 	
-	
-	// Creates the edit and delete links for each item
-	function makeItemLinks(key, linksLi) {
-		var editLink = document.createElement('a');
-		editLink.href = "#";
-		editLink.key = key;
-		var editText = "Edit Item";
-		editLink.addEventListener("click", editItem);
-		editLink.innerHTML = editText;
-		linksLi.appendChild(editLink);
-		
-		var breakTag = document.createElement('br');
-		linksLi.appendChild(breakTag);
-		
-		var deleteLink = document.createElement('a');
-		deleteLink.href = "#";
-		deleteLink.key = key;
-		var deleteText = "Delete Item";
-		deleteLink.addEventListener("click", deleteItem);
-		deleteLink.innerHTML = deleteText;
-		linksLi.appendChild(deleteLink);
-		
-		var hrTag = document.createElement('hr');
-		linksLi.appendChild(hrTag);
-	}
+	// Links and Submit Click Events
+	var submit = $('submit');
+	submit.addEventListener("click", validate);
 	
 	function editItem() {
 		// Grab the data from our item in local storage.
@@ -216,13 +234,80 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 		
 		// Remove the initial listener from the input 'save' button.
-		save.removeEventListener("click", storeData);
+		submit.removeEventListener("click", storeData);
 		// Change the submit button value to edit
 		$('submit').value = "Edit Item";
 		var editSubmit = $('submit');
 		// Save the key value established in this function as a property oof the editSubmit event
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
+	}
+	
+	function deleteItem() {
+		var ask = confirm("Are you sure you want to delete this item?");
+		if(ask) {
+			localStorage.removeItem(this.key);
+			alert("Contact was deleted.");
+			window.location.reload();
+		} else {
+			alert("Item was NOT deleted.");
+		}
+	}
+	
+	// Creates the edit and delete links for each item
+	function makeItemLinks(key, linksLi) {
+		var editLink = document.createElement('a');
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Item";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+		
+		var deleteLink = document.createElement('a');
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Item";
+		deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+		
+		var hrTag = document.createElement('hr');
+		linksLi.appendChild(hrTag);
+	}
+	
+	function getData() {
+		toggleControls("on");
+		console.log("Getting data.");
+		document.body.appendChild(document.createElement('br'));
+   		document.body.appendChild(document.createElement('hr'));
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		$('items').style.display = "block";
+		for(var i=0, len=localStorage.length; i < len; i++) {
+			var makeli = document.createElement('li');
+			var linksLi = document.createElement('li');
+			makeList.appendChild(makeli);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeli.appendChild(makeSubList);
+			for(var n in obj) {
+				var makeSubli = document.createElement('li');
+				makeSubList.appendChild(makeSubli);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubli.innerHTML = optSubText;
+				makeSubList.appendChild(linksLi);
+			}
+			makeItemLinks(localStorage.key(i), linksLi); // Create our edit and delete links for each item
+		}
 	}
 	
 	function clearLocalData() {
@@ -237,95 +322,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 	
-	function deleteItem() {
-		var ask = confirm("Are you sure you want to delete this item?");
-		if(ask) {
-			localStorage.removeItem(this.key);
-			alert("Contact was deleted.");
-			window.location.reload();
-		} else {
-			alert("Item was NOT deleted.");
-		}
-	}
-	
-	function validate(e) {
-		// Define the elements we want to check
-		var getGroup = $('groups');
-		var getItemNumber = $('itemNumber'); // check for some format. ex: AAA###
-		var getItemPrice = $('itemPrice'); // check for $##.## format
-		var getQuantity = $('quantity'); // make sure it is a number
-		var getTextArea = $('textarea'); // check for length 255 char
-		
-		// Reset Error Messages
-		errMsg.innerHTML = "";
-		getGroup.style.border = "none";
-		getItemNumber.sytle.border = "none";
-		getItemPrice.sytle.border = "none";
-		getQuantity.sytle.border = "none";
-		getTextArea.sytle.border = "none";
-		
-		// Get Error Messages
-		var messageArray = [];
-		
-		// Group validation
-		if(getGroup.value === "Where did you hear about us?") {
-			var groupError = "Please make a selection.";
-			getGroup.style.border = "1px solid red";
-			messageArray.push(groupError);
-		}
-		
-		// Item number validation
-		if(getItemNumber.value === "") {
-			var itemNumberError = "Please enter a valid item number";
-			getItemNumber.sytle.border = "1px solid red";
-			messageArray.push(itemNumberError);
-		}
-		
-		// Item price validation
-		if(getItemPrice.value === "") {
-			var itemPriceError = "Please enter a valid item price";
-			getItemPrice.sytle.border = "1px solid red";
-			messageArray.push(itemPriceError);
-		}
-		
-		// Item quantity validation
-		if(getQuantity.value === "") {
-			var itemQuantityError = "Please enter a valid item quantity";
-			getQuantity.sytle.border = "1px solid red";
-			messageArray.push(itemQuantityError);
-		}
-		
-		// Textarea validation
-		if(getTextArea.value.length > 256) {
-			var textAreaError = "Please enter a 256 or less characters";
-			getTextArea.sytle.border = "1px solid red";
-			messageArray.push(textAreaError);
-		}
-		
-		if (messageArray.length >= 1) {
-			for(var i=0, j=messageArray.length; i < j; i++) {
-				var txt = document.createElement('li');
-				txt.innerHTML = messageArray[i];
-				errMsg.appendChild(txt);
-			}
-			e.preventDefault();
-			return false;
-		} else {
-			// If everything validates, save the data.
-			storeData(this.key);
-		}
-	}
-	
-	// Links and Submit Click Events
-	var submit = $('submit');
-	submit.addEventListener("click", storeData);
-	
 	var clearAll = $('clearAll', clearLocalData);
 	clearAll.addEventListener("click", clearLocalData);
 
 	var displayData = $('displayData');
 	displayData.addEventListener("click", getData);
-
+	
 	makeCats();
 
 }); // End "DOMContentLoaded" listener
