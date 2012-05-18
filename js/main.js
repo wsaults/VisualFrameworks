@@ -222,7 +222,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 		
 		// Radio
-		var radios = document.forms[0].verifyValue;
+		var radios = document.forms[0].verify;
 		for (var i = 0; i < radios.length; i++) {
 			if (radios[i].value == "human" && item.verifyValue[1] == "human") {
 				radios[i].setAttribute("checked", "checked");
@@ -247,7 +247,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		var ask = confirm("Are you sure you want to delete this item?");
 		if(ask) {
 			localStorage.removeItem(this.key);
-			alert("Contact was deleted.");
+			alert("Item was deleted.");
 			window.location.reload();
 		} else {
 			alert("Item was NOT deleted.");
