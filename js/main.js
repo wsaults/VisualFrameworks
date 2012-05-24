@@ -99,20 +99,20 @@ window.addEventListener("DOMContentLoaded", function() {
 		getCheckBoxValue();
 		// Get all form field values.
 		var item = {};
-			item.itemName = ["ItemName:", $('itemName').value];
-			item.itemNumber = ["ItemNumber:", $('itemNumber').value];
-			item.itemColor = ["ItemColor:", $('itemColor').value];
-			item.itemPrice = ["ItemPrice:", $('itemPrice').value];
+			item.itemName = ["Name:", $('itemName').value];
+			item.itemNumber = ["SKU:", $('itemNumber').value];
+			item.itemColor = ["Color:", $('itemColor').value];
+			item.itemPrice = ["Price:", $('itemPrice').value];
 			item.quantity = ["Quantity:", $('quantity').value];
 			// Checkboxes
-			item.giftWrapped = ["GiftWrapped:", giftValue];
-			item.applyCouponCode = ["ApplyCouponCode:", couponValue];
-			item.receiveEmail = ["ReceiveEmail:", emailValue];
+			item.giftWrapped = ["Gift Wrapped:", giftValue];
+			item.applyCouponCode = ["Apply Coupon Code:", couponValue];
+			item.receiveEmail = ["Receive Email:", emailValue];
 			// Radio
 			item.verify = ["Verify:", verifyValue];
 			// Select
-			item.select = ["Select:", $('groups').value];
-			item.textarea = ["Textarea:", $('textarea').value];
+			item.select = ["Referal:", $('groups').value];
+			item.textarea = ["Feedback:", $('textarea').value];
 		
 		// Save the data into local storage
 		localStorage.setItem(id, JSON.stringify(item));
@@ -224,11 +224,11 @@ window.addEventListener("DOMContentLoaded", function() {
 		// Radio
 		var radios = document.forms[0].verify;
 		for (var i = 0; i < radios.length; i++) {
-			if (radios[i].value == "human" && item.verifyValue[1] == "human") {
+			if (radios[i].value == "human" && item.verifyValue[1] == "Human") {
 				radios[i].setAttribute("checked", "checked");
-			} else if (radios[i].value == "martian" && item.verifyValue[1] == "martian") {
+			} else if (radios[i].value == "martian" && item.verifyValue[1] == "Martian") {
 				radios[i].setAttribute("checked", "checked");
-			} else if (radios[i].value == "robot" && item.verifyValue[1] == "robot") {
+			} else if (radios[i].value == "robot" && item.verifyValue[1] == "Robot") {
 				radios[i].setAttribute("checked", "checked");
 			}
 		}
@@ -281,6 +281,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	function getData() {
 		toggleControls("on");
+		if(localStorage.length === 0) {
+			alert("There is no data in local storage. Default data has been added.");
+			autoFillData();
+		}
 		console.log("Getting data.");
 		document.body.appendChild(document.createElement('br'));
    		document.body.appendChild(document.createElement('hr'));
@@ -307,6 +311,14 @@ window.addEventListener("DOMContentLoaded", function() {
 				makeSubList.appendChild(linksLi);
 			}
 			makeItemLinks(localStorage.key(i), linksLi); // Create our edit and delete links for each item
+		}
+	}
+	
+	function autoFillData() {
+		// Store the JSON Object into local storage.
+		for(var n in json) {
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}
 	
