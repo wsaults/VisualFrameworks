@@ -97,7 +97,7 @@ input
 
 }
 
-textarea, select
+textarea, select, selectItem
 {
 	vertical-align: text-top;
 	width: 100%;

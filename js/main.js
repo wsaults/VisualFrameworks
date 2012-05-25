@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		giftValue = "No",
 		couponValue = "No",
 		emailValue = "No",
-		selectGroup = ["*Where did you hear about us?","A website advertisement.","Google told me.","The elders of the internet."]
+		selectGroup = ["*Choose an item","Watch","Wallet","Purse"]
 	;
 	
 	// getElementById Function
@@ -23,9 +23,12 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	function makeCats() {
 		var forTag = document.getElementsByTagName("form"),
-			selectLi = $('select'),
-			makeSelect = document.createElement('select');
+			selectLi = $('select')
+			;
+			var makeSelect = document.createElement('select');
+			
 			makeSelect.setAttribute("id", "groups");
+			
 		for(var i=0, j=selectGroup.length; i<j; i++) {
 			var makeOption = document.createElement('option');
 			var optText = selectGroup[i];
@@ -33,6 +36,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			makeOption.innerHTML = optText;
 			makeSelect.appendChild(makeOption);
 		}
+		
 		selectLi.appendChild(makeSelect);
 	}
 	
@@ -99,7 +103,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		getCheckBoxValue();
 		// Get all form field values.
 		var item = {};
-			item.itemName = ["Name:", $('itemName').value];
 			item.itemNumber = ["SKU:", $('itemNumber').value];
 			item.itemColor = ["Color:", $('itemColor').value];
 			item.itemPrice = ["Price:", $('itemPrice').value];
@@ -111,7 +114,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			// Radio
 			item.verify = ["Verify:", verifyValue];
 			// Select
-			item.select = ["Referal:", $('groups').value];
+			item.select = ["Item:", $('groups').value];
 			item.textarea = ["Feedback:", $('textarea').value];
 		
 		// Save the data into local storage
@@ -140,9 +143,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		// Get Error Messages
 		var messageArray = [];
 		
-		// Group validation
-		if(getGroup.value === "*Where did you hear about us?") {
-			var groupError = "Please make a selection.";
+		// Group validation		
+		if(getGroup.value === "*Choose an item") {
+			var groupError = "Please choose an Item.";
 /* 			getGroup.style.border = "1px solid red"; */
 			messageArray.push(groupError);
 		}
@@ -203,7 +206,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		
 		// Populate the form fields with current localStorage values.
 		$('groups').value = item.select[1];
-		$('itemName').value = item.itemName[1];
 		$('itemNumber').value = item.itemNumber[1];
 		$('itemColor').value = item.itemColor[1];
 		$('itemPrice').value = item.itemPrice[1];
@@ -303,6 +305,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeli.appendChild(makeSubList);
+			getImage(obj.select[1],makeSubList);
 			for(var n in obj) {
 				var makeSubli = document.createElement('li');
 				makeSubList.appendChild(makeSubli);
@@ -320,6 +323,16 @@ window.addEventListener("DOMContentLoaded", function() {
 			var id = Math.floor(Math.random()*100000001);
 			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
+	}
+	
+	// Get the image depending on what value was selected.
+	function getImage(catName, makeSubList) {
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement('img');
+		var setSrc = newImg.setAttribute("src", "images/" + catName + ".png");
+		console.log("The catName is: " + catName);
+		imageLi.appendChild(newImg);
 	}
 	
 	function clearLocalData() {

@@ -1,6 +1,6 @@
 var json = {
 	"item1": {
-		"itemName": ["Name:","Watch"],
+		"itemSelect": ["Item:","Watch"],
 		"itemNumber": ["SKU:","ABC123"],
 		"itemColor": ["Color:","Black"],
 		"itemPrice": ["Price:","129.99"],
@@ -9,12 +9,12 @@ var json = {
 		"applyCouponCode": ["Apply Coupon Code:","No"],
 		"receiveEmail": ["Receive Email:","No"],
 //Radio "verify"["Verify:","1"],
-		"select": ["Referal:","The elders of the internet."],
+		"select": ["Item:","Watch"],
 		"textarea": ["Feedback:","I love Fossil!"]
 	},
 	
 	"item2": {
-		"itemName":["Name:","Wallet"],
+		"itemSelect": ["Item:","Wallet"],
 		"itemNumber": ["SKU:","123ABC"],
 		"itemColor": ["Color:","Brown"],
 		"itemPrice": ["Price:","29.99"],
@@ -23,7 +23,7 @@ var json = {
 		"applyCouponCode": ["Apply Coupon Code:","No"],
 		"receiveEmail": ["Receive Email:","No"],
 //Radio "verify"["Verify:","1"],
-		"select": ["Referal:","Google told me."],
+		"select": ["Item:","Wallet"],
 		"textarea": ["Feedback:","I also love Fossil!"]
 	}
 }
