@@ -202,7 +202,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var submit = $('submit');
 	submit.addEventListener("click", validate);
 	var qtyListener = $('quantity');
-	qtyListener.addEventListener("mouseup", setQuantityLabel);
+	qtyListener.addEventListener("change", setQuantityLabel);
 	
 	function editItem() {
 		// Grab the data from our item in local storage.
