@@ -1,3 +1,7 @@
+// Project: Deliverable 4
+// Name: William Saults
+// Term: 0512
+
 var json = {
 	"item1": {
 		"itemSelect": ["Item:","Watch"],

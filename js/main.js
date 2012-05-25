@@ -1,4 +1,4 @@
-// Project: Deliverable 3
+// Project: Deliverable 4
 // Name: William Saults
 // Term: 0512
 
@@ -221,24 +221,24 @@ window.addEventListener("DOMContentLoaded", function() {
 		$('textarea').value = item.textarea[1];
 
 		// Checkboxes
-		if (item.giftWrapped == "Yes") {
+		if (item.giftWrapped[1] === "Yes") {
 			$('giftWrapped').setAttribute("checked", "checked");
 		}
-		if (item.applyCouponCode == "Yes") {
+		if (item.applyCouponCode[1] === "Yes") {
 			$('applyCouponCode').setAttribute("checked", "checked");
 		}
-		if (item.receiveEmail == "Yes") {
+		if (item.receiveEmail[1] === "Yes") {
 			$('receiveEmail').setAttribute("checked", "checked");
 		}
 		
 		// Radio
 		var radios = document.forms[0].verify;
-		for (var i = 0; i < radios.length; i++) {
-			if (radios[i].value == "human" && item.verifyValue[1] == "Human") {
+		for (var i=0; i<radios.length; i++) {
+			if (radios[i].value === "human" && item.verifyValue[1] == "human") {
 				radios[i].setAttribute("checked", "checked");
-			} else if (radios[i].value == "martian" && item.verifyValue[1] == "Martian") {
+			} else if (radios[i].value === "martian" && item.verifyValue[1] == "martian") {
 				radios[i].setAttribute("checked", "checked");
-			} else if (radios[i].value == "robot" && item.verifyValue[1] == "Robot") {
+			} else if (radios[i].value === "robot" && item.verifyValue[1] == "robot") {
 				radios[i].setAttribute("checked", "checked");
 			}
 		}
