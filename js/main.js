@@ -40,6 +40,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		selectLi.appendChild(makeSelect);
 	}
 	
+	function setQuantityLabel() {
+		console.log("Ran setQty");
+		var qty = $('quantity').value;
+		$('quantityLabel').value = qty;
+	}
+	
 	function getSelectedRadio() {
 		var radios = document.forms[0].verify;
 		for(var i = 0; i < radios.length; i++) {
@@ -195,6 +201,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Links and Submit Click Events
 	var submit = $('submit');
 	submit.addEventListener("click", validate);
+	var qtyListener = $('quantity');
+	qtyListener.addEventListener("mouseup", setQuantityLabel);
 	
 	function editItem() {
 		// Grab the data from our item in local storage.
@@ -354,5 +362,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	displayData.addEventListener("click", getData);
 	
 	makeCats();
+	
+	setQuantityLabel();
 
 }); // End "DOMContentLoaded" listener
